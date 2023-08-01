@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import useFetch from "./useFetch";
+import useFetch from "./Fetch";
 import React from "react";
 
 

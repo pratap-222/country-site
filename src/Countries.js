@@ -1,5 +1,5 @@
 import React from "react";
-import useFetch from "./useFetch";
+import useFetch from "./Fetch";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 let url;
