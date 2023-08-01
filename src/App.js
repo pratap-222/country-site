@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Header from './Header'
+import Countries from './Countries';
+import Country from './Country';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+import useFetch from './useFetch';
+
 
 function App() {
+  const {data} = useFetch("https://restcountries.com/v2/all")
+  
+  const getCountryName = (code) => {
+    let countryName;
+    const country = data.filter((element)=>{
+      return element.alpha3Code === code;
+    })  
+    countryName = country[0].name
+    return countryName;
+  }
+  const numberWithCommas = ( number => {
+    return number
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g,",");
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <div className="App">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Countries numberWithCommas={numberWithCommas}/>}/>
+            <Route path="/:countryName" element={<Country numberWithCommas={numberWithCommas} getCountryName={getCountryName}/>} />
+          </Routes>
+        </div>
+      </Router>
   );
 }
-
 export default App;
