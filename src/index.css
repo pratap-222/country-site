@@ -60,10 +60,6 @@ a{text-decoration: none;}
 .header span:hover{
   background-color: var(--main-bg);
 }
-.header i{
-  font-size:1.3rem;
-  margin-right:10px
-}
 form{
   display:flex;
   justify-content: space-between;
@@ -74,18 +70,12 @@ select,input{
   color:var(--txt);
   border:none;
   border-radius: 5px;
-  box-shadow: 2px -2px 4px var(--shadow),
-              -2px 2px 4px var(--shadow);
 }
 select:focus,input:focus{
   outline:none;
 }
 .inputField{
-  width:35%;
-}
-.inputField i {
-  margin-left:-308px;
-  font-size: large;
+  width:25%;
 }
 input{
   width:80%;
@@ -94,7 +84,8 @@ input{
 }
 select{
   font-size: large;
-  width:160px;
+  text-align: center;
+  width:125px;
   padding:0 10px;
   cursor:pointer;
 }
@@ -119,14 +110,8 @@ select{
 }
 .listItem:hover,
 .borderCountries .borders:hover,
-.back:hover{
-  transform: scale3d(1.1,1.1,1.1);
-}
 .listItem,
 .borderCountries .borders,
-.back{
-  transition: transform ease 1s;
-}
 .listItem .info{padding-left:15px;}
 .listItem .info div{
   margin-bottom: 3px;
@@ -150,14 +135,15 @@ select{
   border-radius: 8px;
   place-items: center;
   background-color: var(--element-bg);
-  box-shadow: 2px -2px 4px var(--shadow),
-              -2px 2px 4px var(--shadow);
   justify-content: center;
 }
-.back i{margin-right:10px;}
+.back .icon{margin-right:8px;}
 .countryPage a{
   text-decoration: none;
   color: var(--txt);
+}
+.country {
+  margin-left: 300px;
 }
 .country .container{
   display:flex;
@@ -208,10 +194,6 @@ select{
   .inputField{
     width:90%;
     display: flex;
-  }
-  .inputField i{
-    margin-left:-95%;
-    margin-top:8px;
   }
   input{width:100%;}
   select{

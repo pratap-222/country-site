@@ -1,15 +1,15 @@
 import React from "react";
-import useFetch from "./Fetch";
+import Fetch from "./Fetch";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-let url;
-const Countries = ({numberWithCommas }) => {
 
-  const { data, loading } = useFetch(url);
+let url;
+const Countries = ({ numberWithCommas }) => {
+  const { data, loading } = Fetch(url);
   const [countries, setCountries] = useState([]);
-  const [inputField , setInputField ] = useState(undefined);
-  const [search,setSearch] = useState(undefined);
-  const [filtra,setFilter] = useState("All");
+  const [inputField, setInputField] = useState("");
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("All");
 
   url = search
     ? `https://restcountries.com/v2/name/${search}`
@@ -19,26 +19,26 @@ const Countries = ({numberWithCommas }) => {
     if (search) {
       setCountries(data);
     } else {
-      if (filtra === "All") setCountries(data);
+      if (filter === "All") setCountries(data);
       else {
         setCountries(
           data.filter((country) => {
-            return country.region === filtra;
+            return country.region === filter;
           })
         );
       }
     }
-  }, [search, data, filtra]);
+  }, [search, data, filter]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearch(inputField);
-}
-const handleSelect = (e) => {
-  setFilter(e.target.value)
-  setSearch(undefined);
-  setInputField('');
-}
+  };
+  const handleSelect = (e) => {
+    setFilter(e.target.value);
+    setSearch("");
+    setInputField("");
+  };
 
   return (
     <>
@@ -56,9 +56,7 @@ const handleSelect = (e) => {
             />
           </div>
           <select id="region" name="region" onChange={handleSelect}>
-            <option value="All" defaultValue>
-              All
-            </option>
+            <option value="All">All</option>
             <option value="Africa">Africa</option>
             <option value="Americas">America</option>
             <option value="Asia">Asia</option>

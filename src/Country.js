@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import useFetch from "./Fetch";
+import Fetch from "./Fetch";
 import React from "react";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 const Country = ({ numberWithCommas, getCountryName }) => {
   const countryName = useParams();
-  const { data, loading } = useFetch(
+  const { data, loading } = Fetch(
     `https://restcountries.com/v2/name/${countryName.countryName}?fullText=true`
   );
   const [country, setCountry] = useState(data);
@@ -19,7 +20,7 @@ const Country = ({ numberWithCommas, getCountryName }) => {
       <div className="container">
         <div className="back">
           <Link to="/">
-            Back
+            <FontAwesomeIcon icon={faArrowLeft} /> Back
           </Link>
         </div>
       </div>
